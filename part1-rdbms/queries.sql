@@ -18,7 +18,7 @@ LIMIT 3;
 SELECT s.sales_rep_name, COUNT(DISTINCT o.customer_id) AS unique_customers
 FROM Sales_reps s
 JOIN Orders o ON s.sales_rep_id = o.sales_rep_id
-GROUP BY s.sales_rep_name;
+GROUP BY s.sales_rep_id, s.sales_rep_name;
 
 -- Q4: Find all orders where the total value exceeds 10,000, sorted by value descending
 SELECT o.order_id, (p.unit_price * o.quantity) AS total_value
