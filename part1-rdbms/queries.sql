@@ -16,7 +16,7 @@ LIMIT 3;
 
 -- Q3: List all sales representatives and the number of unique customers they have handled
 SELECT s.sales_rep_name, COUNT(DISTINCT o.customer_id) AS unique_customers
-FROM Sales_Reps s
+FROM Sales_reps s
 JOIN Orders o ON s.sales_rep_id = o.sales_rep_id
 GROUP BY s.sales_rep_name;
 
