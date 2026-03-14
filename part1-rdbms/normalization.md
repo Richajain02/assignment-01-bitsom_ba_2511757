@@ -13,4 +13,8 @@ Columns: customer_id, customer_name, customer_email
 3. Delete Anomaly:
 Deleting an order row may remove the only record of a product or customer.  
 Example - At row 9 (order_id ORD1075), Vikram Singh (customer_id C005) buys a Desk Chair (product_id P003). If this order is canceled and deleted, the record for Vikram Singh and the product details for the Desk Chair are both lost from the system entirely.  
-Columns: order_id, customer_id, product_id, product_name
+Columns: order_id, customer_id, product_id, product_name   
+
+While keeping data in a single "flat" table seems simpler initially, it is dangerous approach for a growing business. In the flat file, we see data redundancy. For exmaple, Priya Sharma's contact information is repeated across three different rows (rows-2, 5 & 8). If her email changes then the email need to be changed in every row. Failing to do so will result in Update Anomaly.  
+If we delete the order for Vikram Singh (Row 10) we dont only lose the order details but also the product details of Desk Chair. This delete anomaly happens as the entities are not separated.  
+In '3NF' we store one data in one place. Customers, products and sales representative exists in their own tables. This will allow us to add a new Sales representative without needing any order or product and ensures that updation, deletion or insertion in the orders table do not destroy unrelated data.
